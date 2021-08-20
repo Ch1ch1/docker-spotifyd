@@ -11,6 +11,7 @@ steps:
   settings:
     repo: ch1ch1/docker-spotifyd
     auto_tag: true
+    dockerfile: Dockerfile.alsa-dbus
     username: ch1ch1
     password:
       from_secret: dockerhub-password
