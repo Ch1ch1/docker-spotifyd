@@ -1,0 +1,59 @@
+---
+kind: pipeline
+type: docker
+name: Building..
+node:
+  drone: ch1
+
+steps:
+- name: build & push
+  image: plugins/docker
+  settings:
+    repo: ch1ch1/docker-spotifyd
+    auto_tag: true
+    username: ch1ch1
+    password:
+      from_secret: dockerhub-password
+- name: notification success
+  image: plugins/webhook
+  settings:
+    urls:
+     from_secret: webhookgotify
+    content_type: application/json
+    template: |
+      {
+        "extras": {
+        "client::display": {
+        "contentType": "text/markdown"
+        }
+      },
+       "message": "![](https://ch1ch1.fr/img/ok.webp) **{{ repo.owner }}** as updated **{{ repo.name }}**, result: **{{ build.status }}**.",
+       "priority": 4,
+       "title": "{{ repo.name }} build"
+      }
+  when:
+    status: [ success ]
+- name: notification failure
+  image: plugins/webhook
+  settings:
+    urls:
+     from_secret: webhookgotify
+    content_type: application/json
+    template: |
+      {
+        "extras": {
+        "client::display": {
+        "contentType": "text/markdown"
+        }
+      },
+       "message": "![](https://ch1ch1.fr/img/nok.webp) **{{ repo.owner }}** as updated **{{ repo.name }}**, result: **{{ build.status }}**.",
+       "priority": 4,
+       "title": "{{ repo.name }} build"
+      }
+  when:
+    status: [ failure ]
+
+trigger:
+  event:
+  - push
+---
