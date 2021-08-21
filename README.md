@@ -5,12 +5,20 @@
 Spotifyd within a docker container for x64 architectures
 Alsa for audio-backend with D-Bus API for controlling spotifyd through generic media players.
 
+# Available Versions:
+alsa
+alsa-dbus
+portaudio
+portaudio-dbus
+pulseaudio
+pulseaudio-dbus
+
 Docker-compose:
 ```
 version: '3'
 services:
   spotifyd:
-    image: ch1ch1/docker-spotifyd
+    image: ch1ch1/docker-spotifyd:alsa
     network_mode: host
     devices:
       - /dev/snd:/dev/snd
