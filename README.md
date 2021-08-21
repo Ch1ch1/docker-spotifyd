@@ -22,7 +22,7 @@ services:
       - ${AUDIO_GRP}
 ```
 
-If you're running this on a raspberry-pi, you can replace ${AUDIO_GRP} with 29 as that is the id of the audiogroup user. If not, simply type ```id``` in the terminal and enter whatever number shows next to (audio).
+Replace ${AUDIO_GRP} with the audio group number of your system.
 
 ## Limitations
 Spotifyd requires a Spotify Premium account.
