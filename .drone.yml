@@ -6,56 +6,11 @@ node:
   drone: ch1
 
 steps:
-- name: build & push alsa
-  image: plugins/docker
-  settings:
-    repo: ch1ch1/docker-spotifyd
-    tag: [ "alsa" ]
-    dockerfile: Dockerfile.alsa
-    username: ch1ch1
-    password:
-      from_secret: dockerhub-password
 - name: build & push alsa-dbus
   image: plugins/docker
   settings:
     repo: ch1ch1/docker-spotifyd
     tag: [ "alsa-dbus" ]
-    dockerfile: Dockerfile.alsa-dbus
-    username: ch1ch1
-    password:
-      from_secret: dockerhub-password
-- name: build & push portaudio
-  image: plugins/docker
-  settings:
-    repo: ch1ch1/docker-spotifyd
-    tag: [ "portaudio" ]
-    dockerfile: Dockerfile.alsa-dbus
-    username: ch1ch1
-    password:
-      from_secret: dockerhub-password
-- name: build & push portaudio-dbus
-  image: plugins/docker
-  settings:
-    repo: ch1ch1/docker-spotifyd
-    tag: [ "portaudio-dbus" ]
-    dockerfile: Dockerfile.alsa-dbus
-    username: ch1ch1
-    password:
-      from_secret: dockerhub-password
-- name: build & push pulseaudio
-  image: plugins/docker
-  settings:
-    repo: ch1ch1/docker-spotifyd
-    tag: [ "pulseaudio" ]
-    dockerfile: Dockerfile.alsa-dbus
-    username: ch1ch1
-    password:
-      from_secret: dockerhub-password
-- name: build & push pulseaudio-dbus
-  image: plugins/docker
-  settings:
-    repo: ch1ch1/docker-spotifyd
-    tag: [ "pulseaudio-dbus" ]
     dockerfile: Dockerfile.alsa-dbus
     username: ch1ch1
     password:
