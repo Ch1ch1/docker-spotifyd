@@ -9,7 +9,7 @@ steps:
 - name: build & push alsa-dbus
   image: plugins/docker
   settings:
-    repo: ch1ch1/docker-spotifyd
+    repo: ch1ch1/spotifyd
     tag: [ "alsa-dbus" ]
     dockerfile: Dockerfile.alsa-dbus
     username: ch1ch1
