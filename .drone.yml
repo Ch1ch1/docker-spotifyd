@@ -6,12 +6,57 @@ node:
   drone: ch1
 
 steps:
+- name: build & push alsa
+  image: plugins/docker
+  settings:
+    repo: ch1ch1/spotifyd
+    tag: [ "alsa" ]
+    dockerfile: Dockerfile.alsa
+    username: ch1ch1
+    password:
+      from_secret: dockerhub_token
 - name: build & push alsa-dbus
   image: plugins/docker
   settings:
     repo: ch1ch1/spotifyd
     tag: [ "alsa-dbus" ]
     dockerfile: Dockerfile.alsa-dbus
+    username: ch1ch1
+    password:
+      from_secret: dockerhub_token
+- name: build & push portaudio
+  image: plugins/docker
+  settings:
+    repo: ch1ch1/spotifyd
+    tag: [ "portaudio" ]
+    dockerfile: Dockerfile.portaudio
+    username: ch1ch1
+    password:
+      from_secret: dockerhub_token
+- name: build & push portaudio-dbus
+  image: plugins/docker
+  settings:
+    repo: ch1ch1/spotifyd
+    tag: [ "portaudio-dbus" ]
+    dockerfile: Dockerfile.portaudio-dbus
+    username: ch1ch1
+    password:
+      from_secret: dockerhub_token
+- name: build & push pulseaudio
+  image: plugins/docker
+  settings:
+    repo: ch1ch1/spotifyd
+    tag: [ "pulseaudio" ]
+    dockerfile: Dockerfile.pulseaudio
+    username: ch1ch1
+    password:
+      from_secret: dockerhub_token
+- name: build & push pulseaudio-dbus
+  image: plugins/docker
+  settings:
+    repo: ch1ch1/spotifyd
+    tag: [ "pulseaudio-dbus" ]
+    dockerfile: Dockerfile.pulseaudio-dbus
     username: ch1ch1
     password:
       from_secret: dockerhub_token
@@ -59,6 +104,6 @@ trigger:
   - push
 ---
 kind: signature
-hmac: 4be1980e6c930962860601fc1db8a4b60306b528718d1098dea03d4472ac9eb8
+hmac: b763eb9447577d677e873d7757b96893e2b19e89c57953c2e5347aa37d434d2c
 
 ...
