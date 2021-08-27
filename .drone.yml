@@ -8,7 +8,6 @@ node:
 steps:
 - name: build & push alsa
   image: plugins/docker
-  detach: true
   settings:
     repo: ch1ch1/spotifyd
     tag: [ "alsa" ]
@@ -18,7 +17,6 @@ steps:
       from_secret: dockerhub_token
 - name: build & push alsa arm
   image: plugins/docker
-  detach: true
   settings:
     repo: ch1ch1/spotifyd
     tag: [ "alsa" ]
@@ -28,7 +26,6 @@ steps:
       from_secret: dockerhub_token
 - name: build & push alsa arm64
   image: plugins/docker
-  detach: true
   settings:
     repo: ch1ch1/spotifyd
     tag: [ "alsa" ]
@@ -38,7 +35,6 @@ steps:
       from_secret: dockerhub_token
 - name: build & push alsa-dbus
   image: plugins/docker
-  detach: true
   settings:
     repo: ch1ch1/spotifyd
     tag: [ "alsa-dbus" ]
@@ -48,7 +44,6 @@ steps:
       from_secret: dockerhub_token
 - name: build & push portaudio
   image: plugins/docker
-  detach: true
   settings:
     repo: ch1ch1/spotifyd
     tag: [ "portaudio" ]
@@ -58,7 +53,6 @@ steps:
       from_secret: dockerhub_token
 - name: build & push portaudio-dbus
   image: plugins/docker
-  detach: true
   settings:
     repo: ch1ch1/spotifyd
     tag: [ "portaudio-dbus" ]
@@ -68,7 +62,6 @@ steps:
       from_secret: dockerhub_token
 - name: build & push pulseaudio
   image: plugins/docker
-  detach: true
   settings:
     repo: ch1ch1/spotifyd
     tag: [ "pulseaudio" ]
@@ -129,6 +122,6 @@ trigger:
   - push
 ---
 kind: signature
-hmac: d7df896cc46c1b6279280e3cd4e3ddeacb80e74c5f90a0ab25c3bbcbefa952bd
+hmac: ef18100f8c97cf389b02211a7b366934dc7de0922c28155fdb4899a0a57da13d
 
 ...
