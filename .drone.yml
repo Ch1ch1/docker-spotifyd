@@ -15,6 +15,24 @@ steps:
     username: ch1ch1
     password:
       from_secret: dockerhub_token
+- name: build & push alsa arm
+  image: plugins/docker
+  settings:
+    repo: ch1ch1/spotifyd
+    tag: [ "alsa" ]
+    dockerfile: Dockerfile.alsa
+    username: ch1ch1
+    password:
+      from_secret: dockerhub_token
+- name: build & push alsa arm64
+  image: plugins/docker
+  settings:
+    repo: ch1ch1/spotifyd
+    tag: [ "alsa" ]
+    dockerfile: Dockerfile.alsa
+    username: ch1ch1
+    password:
+      from_secret: dockerhub_token
 - name: build & push alsa-dbus
   image: plugins/docker
   settings:
@@ -104,6 +122,6 @@ trigger:
   - push
 ---
 kind: signature
-hmac: b763eb9447577d677e873d7757b96893e2b19e89c57953c2e5347aa37d434d2c
+hmac: ef18100f8c97cf389b02211a7b366934dc7de0922c28155fdb4899a0a57da13d
 
 ...
