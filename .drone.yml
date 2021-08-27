@@ -20,7 +20,7 @@ steps:
   settings:
     repo: ch1ch1/spotifyd
     tag: [ "alsa" ]
-    dockerfile: Dockerfile.alsa
+    dockerfile: Dockerfile.alsa-arm
     username: ch1ch1
     password:
       from_secret: dockerhub_token
@@ -29,7 +29,7 @@ steps:
   settings:
     repo: ch1ch1/spotifyd
     tag: [ "alsa" ]
-    dockerfile: Dockerfile.alsa
+    dockerfile: Dockerfile.alsa-arm64
     username: ch1ch1
     password:
       from_secret: dockerhub_token
