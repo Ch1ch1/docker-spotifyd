@@ -15,48 +15,12 @@ steps:
     username: ch1ch1
     password:
       from_secret: dockerhub_token
-- name: build & push alsa arm
-  image: plugins/docker
-  settings:
-    repo: ch1ch1/spotifyd
-    tag: [ "alsa" ]
-    dockerfile: Dockerfile.alsa-arm
-    username: ch1ch1
-    password:
-      from_secret: dockerhub_token
-- name: build & push alsa arm64
-  image: plugins/docker
-  settings:
-    repo: ch1ch1/spotifyd
-    tag: [ "alsa" ]
-    dockerfile: Dockerfile.alsa-arm64
-    username: ch1ch1
-    password:
-      from_secret: dockerhub_token
 - name: build & push alsa-dbus
   image: plugins/docker
   settings:
     repo: ch1ch1/spotifyd
     tag: [ "alsa-dbus" ]
     dockerfile: Dockerfile.alsa-dbus
-    username: ch1ch1
-    password:
-      from_secret: dockerhub_token
-- name: build & push portaudio
-  image: plugins/docker
-  settings:
-    repo: ch1ch1/spotifyd
-    tag: [ "portaudio" ]
-    dockerfile: Dockerfile.portaudio
-    username: ch1ch1
-    password:
-      from_secret: dockerhub_token
-- name: build & push portaudio-dbus
-  image: plugins/docker
-  settings:
-    repo: ch1ch1/spotifyd
-    tag: [ "portaudio-dbus" ]
-    dockerfile: Dockerfile.portaudio-dbus
     username: ch1ch1
     password:
       from_secret: dockerhub_token
@@ -122,6 +86,6 @@ trigger:
   - push
 ---
 kind: signature
-hmac: ef18100f8c97cf389b02211a7b366934dc7de0922c28155fdb4899a0a57da13d
+hmac: 61b3e1cce9c1d9aef6f49a34ff274b6b1e1e9b8c557947035b33dd72bff70540
 
 ...
