@@ -3,7 +3,7 @@ kind: pipeline
 type: docker
 name: Building..
 node:
-  drone: ch1
+  drone: nimi
 
 steps:
 - name: build & push alsa
@@ -86,6 +86,6 @@ trigger:
   - push
 ---
 kind: signature
-hmac: 61b3e1cce9c1d9aef6f49a34ff274b6b1e1e9b8c557947035b33dd72bff70540
+hmac: 96c3807400a1ad75aa89bcb381e79c05b4cb59d0f57da0a9b4a764daf7ea082c
 
 ...
