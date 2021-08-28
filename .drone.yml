@@ -3,7 +3,7 @@ kind: pipeline
 type: docker
 name: Building..
 node:
-  drone: nimi
+  drone: ch1
 steps:
   - name: build & push alsa
     image: plugins/docker
