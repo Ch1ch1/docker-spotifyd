@@ -4,88 +4,87 @@ type: docker
 name: Building..
 node:
   drone: nimi
-
 steps:
-- name: build & push alsa
-  image: plugins/docker
-  settings:
-    repo: ch1ch1/spotifyd
-    tag: [ "alsa" ]
-    dockerfile: Dockerfile.alsa
-    username: ch1ch1
-    password:
-      from_secret: dockerhub_token
-- name: build & push alsa-dbus
-  image: plugins/docker
-  settings:
-    repo: ch1ch1/spotifyd
-    tag: [ "alsa-dbus" ]
-    dockerfile: Dockerfile.alsa-dbus
-    username: ch1ch1
-    password:
-      from_secret: dockerhub_token
-- name: build & push pulseaudio
-  image: plugins/docker
-  settings:
-    repo: ch1ch1/spotifyd
-    tag: [ "pulseaudio" ]
-    dockerfile: Dockerfile.pulseaudio
-    username: ch1ch1
-    password:
-      from_secret: dockerhub_token
-- name: build & push pulseaudio-dbus
-  image: plugins/docker
-  settings:
-    repo: ch1ch1/spotifyd
-    tag: [ "pulseaudio-dbus" ]
-    dockerfile: Dockerfile.pulseaudio-dbus
-    username: ch1ch1
-    password:
-      from_secret: dockerhub_token
-- name: notification success
-  image: plugins/webhook
-  settings:
-    urls:
-     from_secret: webhookgotify
-    content_type: application/json
-    template: |
-      {
-        "extras": {
-        "client::display": {
-        "contentType": "text/markdown"
+  - name: build & push alsa
+    image: plugins/docker
+    settings:
+      repo: ch1ch1/spotifyd
+      tag: ["alsa"]
+      dockerfile: Dockerfile.alsa
+      username: ch1ch1
+      password:
+        from_secret: dockerhub_token
+  - name: build & push alsa-dbus
+    image: plugins/docker
+    settings:
+      repo: ch1ch1/spotifyd
+      tag: ["alsa-dbus"]
+      dockerfile: Dockerfile.alsa-dbus
+      username: ch1ch1
+      password:
+        from_secret: dockerhub_token
+  - name: build & push pulseaudio
+    image: plugins/docker
+    settings:
+      repo: ch1ch1/spotifyd
+      tag: ["pulseaudio"]
+      dockerfile: Dockerfile.pulseaudio
+      username: ch1ch1
+      password:
+        from_secret: dockerhub_token
+  - name: build & push pulseaudio-dbus
+    image: plugins/docker
+    settings:
+      repo: ch1ch1/spotifyd
+      tag: ["pulseaudio-dbus"]
+      dockerfile: Dockerfile.pulseaudio-dbus
+      username: ch1ch1
+      password:
+        from_secret: dockerhub_token
+  - name: notification success
+    image: plugins/webhook
+    settings:
+      urls:
+        from_secret: webhookgotify
+      content_type: application/json
+      template: |
+        {
+          "extras": {
+          "client::display": {
+          "contentType": "text/markdown"
+          }
+        },
+         "message": "![](https://ch1ch1.fr/img/ok.webp) **{{ repo.owner }}** as updated **{{ repo.name }}**, result: **{{ build.status }}**.",
+         "priority": 4,
+         "title": "{{ repo.name }} build"
         }
-      },
-       "message": "![](https://ch1ch1.fr/img/ok.webp) **{{ repo.owner }}** as updated **{{ repo.name }}**, result: **{{ build.status }}**.",
-       "priority": 4,
-       "title": "{{ repo.name }} build"
-      }
-  when:
-    status: [ success ]
-- name: notification failure
-  image: plugins/webhook
-  settings:
-    urls:
-     from_secret: webhookgotify
-    content_type: application/json
-    template: |
-      {
-        "extras": {
-        "client::display": {
-        "contentType": "text/markdown"
+    when:
+      status: [success]
+  - name: notification failure
+    image: plugins/webhook
+    settings:
+      urls:
+        from_secret: webhookgotify
+      content_type: application/json
+      template: |
+        {
+          "extras": {
+          "client::display": {
+          "contentType": "text/markdown"
+          }
+        },
+         "message": "![](https://ch1ch1.fr/img/nok.webp) **{{ repo.owner }}** as updated **{{ repo.name }}**, result: **{{ build.status }}**.",
+         "priority": 4,
+         "title": "{{ repo.name }} build"
         }
-      },
-       "message": "![](https://ch1ch1.fr/img/nok.webp) **{{ repo.owner }}** as updated **{{ repo.name }}**, result: **{{ build.status }}**.",
-       "priority": 4,
-       "title": "{{ repo.name }} build"
-      }
-  when:
-    status: [ failure ]
+    when:
+      status: [failure]
 
 trigger:
   event:
-  - push
+    - push
 ---
 kind: signature
-hmac: 96c3807400a1ad75aa89bcb381e79c05b4cb59d0f57da0a9b4a764daf7ea082c
+hmac: 51054b7fdd940478ee989290f9d415faf9ccf494f938d6d4657d0dfd881f368a
 
 ...
